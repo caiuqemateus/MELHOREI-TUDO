@@ -1,0 +1,387 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+
+/* 💚 SEÇÃO HISTÓRIAS DE ADOÇÃO - DESIGN PROFISSIONAL */
+.testimonials {
+  padding: 120px 0;
+  background: linear-gradient(135deg, rgba(107, 207, 127, 0.05) 0%, rgba(255, 217, 61, 0.05) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonials::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(107, 207, 127, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.testimonialsHeader {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.testimonialsHeaderContent {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.testimonialsLabel {
+  display: inline-block;
+  padding: 8px 20px;
+  background: rgba(107, 207, 127, 0.1);
+  color: #6BCF7F;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 24px;
+  margin-bottom: 16px;
+  letter-spacing: 0.5px;
+}
+
+.sectionTitle {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  text-align: center;
+  color: #2D3436;
+  margin-bottom: 16px;
+}
+
+.sectionSubtitle {
+  font-size: 1.2rem;
+  font-weight: 400;
+  text-align: center;
+  color: #636E72;
+  margin-bottom: 60px;
+}
+
+.testimonialCardModern {
+  max-width: 1100px;
+  margin: 0 auto;
+  background: #FFFFFF;
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+}
+
+.testimonialContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  min-height: 500px;
+}
+
+.testimonialImageSection {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+}
+
+.testimonialPetImageWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.testimonialPetImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.testimonialCardModern:hover .testimonialPetImage {
+  transform: scale(1.05);
+}
+
+.testimonialBadge {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  background: rgba(107, 207, 127, 0.95);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(107, 207, 127, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.testimonialTextSection {
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+}
+
+.testimonialQuote {
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.quoteIcon {
+  color: rgba(107, 207, 127, 0.2);
+  margin-bottom: -12px;
+}
+
+.testimonialQuoteText {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.6;
+  color: #2D3436;
+  margin: 0;
+  position: relative;
+}
+
+.testimonialStory {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #636E72;
+  margin: 0;
+}
+
+.testimonialFooter {
+  margin-top: auto;
+  padding-top: 24px;
+  border-top: 2px solid #f0f0f0;
+}
+
+.testimonialOwner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.testimonialOwnerImage {
+  flex-shrink: 0;
+}
+
+.ownerAvatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #6BCF7F;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.testimonialOwnerInfo {
+  flex: 1;
+}
+
+.testimonialOwnerName {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #2D3436;
+  margin: 0 0 4px 0;
+}
+
+.testimonialPetName {
+  font-size: 0.95rem;
+  color: #636E72;
+  margin: 0 0 8px 0;
+}
+
+.testimonialPetName strong {
+  color: #6BCF7F;
+  font-weight: 600;
+}
+
+.testimonialMeta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.testimonialLocation,
+.testimonialDate {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: #636E72;
+}
+
+.testimonialLocation svg,
+.testimonialDate svg {
+  color: #6BCF7F;
+  opacity: 0.7;
+}
+
+.testimonialNavigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  padding: 32px;
+  background: rgba(107, 207, 127, 0.03);
+  border-top: 1px solid rgba(107, 207, 127, 0.1);
+}
+
+.navButtonModern {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 2px solid #6BCF7F;
+  color: #6BCF7F;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.navButtonModern:hover {
+  background: #6BCF7F;
+  color: #FFFFFF;
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(107, 207, 127, 0.3);
+}
+
+.testimonialIndicators {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  max-width: 500px;
+  justify-content: center;
+}
+
+.indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #DFE6E9;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.indicator:hover {
+  background: rgba(107, 207, 127, 0.5);
+  transform: scale(1.2);
+}
+
+.indicatorActive {
+  background: #6BCF7F;
+  width: 12px;
+  height: 12px;
+}
+
+.testimonialCounter {
+  position: absolute;
+  bottom: 12px;
+  right: 24px;
+  font-size: 0.85rem;
+  color: #636E72;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 6px 14px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* 📱 RESPONSIVIDADE */
+@media (max-width: 1024px) {
+  .testimonialContent {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonialImageSection {
+    min-height: 350px;
+  }
+
+  .testimonialTextSection {
+    padding: 40px 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .testimonials {
+    padding: 80px 0;
+  }
+
+  .testimonialsHeader {
+    margin-bottom: 40px;
+  }
+
+  .testimonialCardModern {
+    margin: 0 16px;
+  }
+
+  .testimonialImageSection {
+    min-height: 300px;
+  }
+
+  .testimonialTextSection {
+    padding: 32px 24px;
+  }
+
+  .testimonialQuoteText {
+    font-size: 1.2rem;
+  }
+
+  .testimonialStory {
+    font-size: 0.95rem;
+  }
+
+  .ownerAvatar {
+    width: 50px;
+    height: 50px;
+  }
+
+  .testimonialOwnerName {
+    font-size: 1rem;
+  }
+
+  .navButtonModern {
+    width: 40px;
+    height: 40px;
+  }
+
+  .testimonialIndicators {
+    gap: 6px;
+  }
+
+  .indicator {
+    width: 6px;
+    height: 6px;
+  }
+
+  .indicatorActive {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .testimonialNavigation {
+    padding: 20px;
+    gap: 16px;
+  }
+
+  .testimonialCounter {
+    bottom: 8px;
+    right: 12px;
+    font-size: 0.75rem;
+    padding: 4px 10px;
+  }
+}
