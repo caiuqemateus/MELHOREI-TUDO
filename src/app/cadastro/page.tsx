@@ -1,12 +1,12 @@
 'use client';
 
-import TextField from "@/components/TextField";
-import styles from './styles.module.css';
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { useState } from "react";
+import Header from "@/components/Header";
+import TextField from "@/components/TextField";
 import api from "@/services/api";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import styles from './styles.module.css';
 
 export default function Cadastrar() {
   const router = useRouter();
