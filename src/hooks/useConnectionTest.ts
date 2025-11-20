@@ -1,7 +1,7 @@
 // src/hooks/useConnectionTest.ts
 'use client';
-import { useState } from 'react';
 import { animalService } from '@/services/animalService';
+import { useState } from 'react';
 
 export function useConnectionTest() {
   const [testResult, setTestResult] = useState<{ success: boolean; message: string } | null>(null);

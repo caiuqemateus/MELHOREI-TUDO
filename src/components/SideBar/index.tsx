@@ -1,8 +1,8 @@
 'use client';
 
-import styles from './styles.module.css';
 import { useAuth } from '@/hooks/useAuth';
 import Link from 'next/link';
+import styles from './styles.module.css';
 
 interface SideBarProps {
   open: boolean;

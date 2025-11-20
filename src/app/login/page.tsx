@@ -1,12 +1,12 @@
 'use client';
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { useAuth } from '@/contexts/AuthContext'; // AGORA É AQUI
-import TextField from '@/components/TextField';
-import Header from '@/components/Header';
-import styles from './styles.module.css';
 import Footer from '@/components/Footer';
+import Header from '@/components/Header';
+import TextField from '@/components/TextField';
+import { useAuth } from '@/contexts/AuthContext'; // AGORA É AQUI
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import styles from './styles.module.css';
 
 export default function Login() {
   const { login } = useAuth(); // PEGA A FUNÇÃO CERTA DO CONTEXT

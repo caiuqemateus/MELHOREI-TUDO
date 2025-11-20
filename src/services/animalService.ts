@@ -1,6 +1,6 @@
 // src/services/animalService.ts
-import api from './api'; // ✅ Usa sua instância configurada
 import { Pet } from '@/Models/Pet';
+import api from './api'; // ✅ Usa sua instância configurada
 
 const IS_DEV = process.env.NODE_ENV === 'development';
 

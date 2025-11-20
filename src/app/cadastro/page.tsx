@@ -35,7 +35,7 @@ export default function Cadastrar() {
       return;
     }
 
-    const dados: any = {
+    const dados: Record<string, string> = {
       name: nomeInteiro,
       email,
       pass: senha,
@@ -55,10 +55,11 @@ export default function Cadastrar() {
 
       // ✅ Exibe o modal de sucesso
       setShowSuccessModal(true);
-    } catch (error: any) {
+    } catch (error) {
+      const err = error as { response?: { data?: { message?: string } } };
       console.error("Erro ao cadastrar:", error);
       setErrorMessage(
-        error.response?.data?.message ||
+        err.response?.data?.message ||
         "Ocorreu um erro ao cadastrar. Tente novamente."
       );
       setShowErrorModal(true);

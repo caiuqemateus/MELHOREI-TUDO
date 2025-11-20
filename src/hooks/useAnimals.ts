@@ -1,7 +1,7 @@
 // src/hooks/useAnimals.ts
-import { useEffect, useState } from 'react';
 import { Pet } from '@/Models/Pet';
 import { animalService } from '@/services/animalService';
+import { useEffect, useState } from 'react';
 
 export function useAnimals() {
   const [animais, setAnimais] = useState<Pet[]>([]);
@@ -52,7 +52,7 @@ export function useAnimals() {
       // Tenta salvar na API primeiro
       await animalService.create(novo);
       setConnectionStatus('online');
-    } catch (error: any) {
+    } catch (error) {
       if (animalService.isConnectionError(error)) {
         setConnectionStatus('offline');
         console.warn('🔌 Backend offline - salvando apenas no localStorage');
