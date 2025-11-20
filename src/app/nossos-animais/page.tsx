@@ -39,13 +39,13 @@ export default function NossosAnimais() {
       'cidade',
       'estado',
     ];
-    const novo: Record<string, unknown> = { ...animal };
+    const novo = { ...animal } as Record<string, unknown>;
     camposTexto.forEach((campo) => {
       if (novo[campo] && typeof novo[campo] === 'string') {
         novo[campo] = (novo[campo] as string).toLowerCase();
       }
     });
-    return novo as Pet;
+    return novo as unknown as Pet;
   };
 
   // 🔹 Carrega todos os animais e normaliza
