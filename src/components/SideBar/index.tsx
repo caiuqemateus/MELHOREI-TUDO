@@ -67,7 +67,7 @@ export default function SideBar({ open, onClose }: SideBarProps) {
                 <li>
                   <button
                     onClick={() => {
-                      logout();
+                      logout?.();
                       onClose();
                     }}
                     className={styles.logoutBtn}
