@@ -39,13 +39,13 @@ export default function NossosAnimais() {
       'cidade',
       'estado',
     ];
-    const novo: any = { ...animal };
+    const novo: Record<string, unknown> = { ...animal };
     camposTexto.forEach((campo) => {
       if (novo[campo] && typeof novo[campo] === 'string') {
-        novo[campo] = novo[campo].toLowerCase();
+        novo[campo] = (novo[campo] as string).toLowerCase();
       }
     });
-    return novo;
+    return novo as Pet;
   };
 
   // 🔹 Carrega todos os animais e normaliza
@@ -56,7 +56,7 @@ export default function NossosAnimais() {
         const res = await api.get('/animals');
         const normalizados = res.data.map((a: Pet) => normalizarAnimal(a));
         setAnimais(normalizados);
-      } catch (err: any) {
+      } catch (err) {
         console.error(err);
         setError('Erro ao conectar com o backend');
       } finally {
@@ -107,7 +107,7 @@ export default function NossosAnimais() {
       const formData = new FormData();
       Object.entries(novoAnimal).forEach(([key, value]) => {
         if (value !== undefined && value !== null) {
-          formData.append(key, value as any);
+          formData.append(key, String(value));
         }
       });
 
@@ -120,7 +120,7 @@ export default function NossosAnimais() {
 
       setAnimais((prev) => [...prev, normalizarAnimal(res.data)]);
       setModalAberto(false);
-    } catch (err: any) {
+    } catch (err) {
       console.error('❌ Erro ao salvar animal:', err);
       alert('Erro ao salvar o animal. Verifique se você está logado.');
     }

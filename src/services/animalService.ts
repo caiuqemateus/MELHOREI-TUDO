@@ -30,7 +30,8 @@ export const animalService = {
       const res = await api.get('/animals');
       console.log('✅ Dados carregados do backend');
       return res.data;
-    } catch (error: any) {
+    } catch (error) {
+      const err = error as { response?: { status?: number }; message?: string };
       // Em desenvolvimento, retorna mock data se backend estiver offline
       if (IS_DEV && this.isConnectionError(error)) {
         console.warn('📋 Backend offline - usando dados mock');
@@ -38,12 +39,12 @@ export const animalService = {
       }
       
       // Em produção ou outros erros, verifica se é 401 (não autorizado)
-      if (error.response?.status === 401) {
+      if (err.response?.status === 401) {
         console.error('🔐 Não autorizado - redirecionando para login');
         // Seu interceptor já cuida do redirecionamento
       }
       
-      console.error('Erro ao buscar animais:', error.message);
+      console.error('Erro ao buscar animais:', err.message);
       throw error;
     }
   },
@@ -53,18 +54,19 @@ export const animalService = {
       const res = await api.post('/animals', animal);
       console.log('✅ Animal criado no backend');
       return res.data;
-    } catch (error: any) {
+    } catch (error) {
+      const err = error as { response?: { status?: number }; message?: string };
       // Em desenvolvimento, simula sucesso se backend estiver offline
       if (IS_DEV && this.isConnectionError(error)) {
         console.warn('📋 Backend offline - simulando criação local');
         return { ...animal, id: Date.now().toString() };
       }
       
-      if (error.response?.status === 401) {
+      if (err.response?.status === 401) {
         console.error('🔐 Não autorizado para criar animal');
       }
       
-      console.error('Erro ao criar animal:', error.message);
+      console.error('Erro ao criar animal:', err.message);
       throw error;
     }
   },
@@ -73,12 +75,13 @@ export const animalService = {
     try {
       await api.delete('/animals');
       console.log('✅ Todos os animais removidos do backend');
-    } catch (error: any) {
+    } catch (error) {
+      const err = error as { message?: string };
       if (IS_DEV && this.isConnectionError(error)) {
         console.warn('📋 Backend offline - simulando limpeza local');
         return;
       }
-      console.error('Erro ao deletar animais:', error.message);
+      console.error('Erro ao deletar animais:', err.message);
       throw error;
     }
   },
@@ -97,7 +100,7 @@ export const animalService = {
         success: true,
         message: `✅ Conexão estabelecida (${responseTime}ms)`
       };
-    } catch (error: any) {
+    } catch (error) {
       if (this.isConnectionError(error)) {
         return {
           success: false,
@@ -106,21 +109,23 @@ export const animalService = {
       }
       
       // Outros erros (como 401) não são problemas de conexão
+      const err = error as { response?: { status?: number }; message?: string };
       return {
         success: false,
-        message: `⚠️ Backend respondeu com erro: ${error.response?.status || error.message}`
+        message: `⚠️ Backend respondeu com erro: ${err.response?.status || err.message}`
       };
     }
   },
 
   // Verifica se o erro é de conexão (não resposta do servidor)
-  isConnectionError(error: any): boolean {
+  isConnectionError(error: unknown): boolean {
+    const err = error as { code?: string; message?: string; response?: unknown };
     return (
-      error.code === 'NETWORK_ERROR' ||
-      error.code === 'ECONNREFUSED' ||
-      error.message?.includes('Network Error') ||
-      error.message?.includes('timeout') ||
-      !error.response // Sem resposta do servidor
+      err.code === 'NETWORK_ERROR' ||
+      err.code === 'ECONNREFUSED' ||
+      err.message?.includes('Network Error') ||
+      err.message?.includes('timeout') ||
+      !err.response // Sem resposta do servidor
     );
   }
 };

@@ -2,6 +2,7 @@
 
 import styles from './styles.module.css';
 import { useAuth } from '@/hooks/useAuth';
+import Link from 'next/link';
 
 interface SideBarProps {
   open: boolean;
@@ -9,7 +10,9 @@ interface SideBarProps {
 }
 
 export default function SideBar({ open, onClose }: SideBarProps) {
-  const { user, logout } = useAuth();
+  const auth = useAuth();
+  const user = auth?.user;
+  const logout = auth?.logout;
 
   return (
     <>
@@ -51,16 +54,16 @@ export default function SideBar({ open, onClose }: SideBarProps) {
           <ul>
             {!user ? (
               <>
-                <li><a href="/doacao" onClick={onClose}>Doação</a></li>
-                <li><a href="/nossos-animais" onClick={onClose}>Animais</a></li>
-                <li><a href="/faleConosco" onClick={onClose}>Fale Conosco</a></li>
-                <li><a href="/login" onClick={onClose}>Entrar</a></li>
+                <li><Link href="/doacao" onClick={onClose}>Doação</Link></li>
+                <li><Link href="/nossos-animais" onClick={onClose}>Animais</Link></li>
+                <li><Link href="/faleConosco" onClick={onClose}>Fale Conosco</Link></li>
+                <li><Link href="/login" onClick={onClose}>Entrar</Link></li>
               </>
             ) : (
               <>
-                <li><a href="/animais-favoritos" onClick={onClose}>Animais Favoritos</a></li>
-                <li><a href="/doacao" onClick={onClose}>Doação</a></li>
-                <li><a href="/configuracoes" onClick={onClose}>Configurações</a></li>
+                <li><Link href="/animais-favoritos" onClick={onClose}>Animais Favoritos</Link></li>
+                <li><Link href="/doacao" onClick={onClose}>Doação</Link></li>
+                <li><Link href="/configuracoes" onClick={onClose}>Configurações</Link></li>
                 <li>
                   <button
                     onClick={() => {

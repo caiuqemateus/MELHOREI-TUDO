@@ -14,7 +14,7 @@ export function useConnectionTest() {
     try {
       const result = await animalService.testConnection();
       setTestResult(result);
-    } catch (error) {
+    } catch {
       setTestResult({
         success: false,
         message: '❌ Erro inesperado no teste de conexão'

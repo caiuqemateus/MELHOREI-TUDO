@@ -21,7 +21,7 @@ export default function Login() {
     try {
       await login(email, pass); // USA O LOGIN DO AUTHCONTEXT
       router.push('/dashboard'); 
-    } catch (err) {
+    } catch {
       alert("Email ou senha inválidos.");
     }
   }

@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import styles from './styles.module.css';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     variant?: 'primary' | 'secondary' | 'outline';

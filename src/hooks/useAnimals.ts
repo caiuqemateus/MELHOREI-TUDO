@@ -20,7 +20,7 @@ export function useAnimals() {
       const dadosAPI = await animalService.getAll();
       setAnimais(dadosAPI);
       setConnectionStatus('online');
-    } catch (error: any) {
+    } catch (error) {
       // Verifica se é erro de conexão
       if (animalService.isConnectionError(error)) {
         setConnectionStatus('offline');
@@ -80,7 +80,7 @@ export function useAnimals() {
       // Tenta limpar na API
       await animalService.deleteAll();
       setConnectionStatus('online');
-    } catch (error: any) {
+    } catch (error) {
       if (animalService.isConnectionError(error)) {
         setConnectionStatus('offline');
         console.warn('🔌 Backend offline - limpando apenas localmente');
@@ -100,7 +100,7 @@ export function useAnimals() {
     }
   };
 
-  const filtrarAnimais = (filtros: any) => {
+  const filtrarAnimais = (filtros: { disponibilidade?: string; especie?: string; sexo?: string; porte?: string; busca?: string }) => {
     return animais.filter((a) => {
       if (filtros.disponibilidade === 'somente_disponiveis' && !a.disponivel) return false;
       if (filtros.especie !== 'todas' && a.especie !== filtros.especie) return false;
